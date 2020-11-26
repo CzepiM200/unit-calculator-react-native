@@ -1,13 +1,16 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import * as React from 'react';
+import { Text, View, StyleSheet } from 'react-native';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import Volume from './screens/Volume';
+import MainScreen from './screens/MainScreen';
 
 export default function App() {
+  console.log("LOGiiiiiiiiiii");
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaProvider style={{ paddingTop: 28}}>
+      <MainScreen />
+    </SafeAreaProvider> 
+    
   );
 }
 
