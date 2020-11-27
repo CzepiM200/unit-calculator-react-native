@@ -6,6 +6,9 @@ import Icon from 'react-native-vector-icons/Feather';
 const Distance = () => {
     const [value, onChangeText] = React.useState('0');
     const [spinnerValue, onChangeSpinnerValue] = React.useState('0');
+    const [data, onChangeData] = React.useState({
+
+    });
 
     return(
         <SafeAreaView style={styles.main}>
@@ -22,10 +25,10 @@ const Distance = () => {
                     {label: 'm', value: '0'},
                     {label: 'dm', value: '-1'},
                     {label: 'cm', value: '-2'},
-                    {label: 'mm', value: '-2'},
-                    {label: 'µm', value: '-2'},
-                    {label: 'nm', value: '-2'},
-                    {label: 'pm', value: '-2'},
+                    {label: 'mm', value: '-3'},
+                    {label: 'µm', value: '-6'},
+                    {label: 'nm', value: '-9'},
+                    {label: 'pm', value: '-12'},
                 ]}
                 defaultValue={spinnerValue}
                 containerStyle={{height: 40}}
@@ -37,7 +40,13 @@ const Distance = () => {
                 onChangeItem={item => onChangeSpinnerValue(item.value)}/>
             </View>
             <View style={styles.bottom}>
-                <Text>xDDDD</Text>
+                <Text style={styles.output}>{(parseFloat(value)*Math.pow(10, parseFloat(spinnerValue))).toFixed(4)} m</Text>
+                <Text style={styles.output}>{(parseFloat(value)*Math.pow(10, parseFloat(spinnerValue) + 1)).toFixed(4)} dm</Text>
+                <Text style={styles.output}>{(parseFloat(value)*Math.pow(10, parseFloat(spinnerValue) + 2)).toFixed(4)} cm</Text>
+                <Text style={styles.output}>{(parseFloat(value)*Math.pow(10, parseFloat(spinnerValue) + 3)).toFixed(4)} mm</Text>
+                <Text style={styles.output}>{(parseFloat(value)*Math.pow(10, parseFloat(spinnerValue) + 6)).toFixed(4)} µm</Text>
+                <Text style={styles.output}>{(parseFloat(value)*Math.pow(10, parseFloat(spinnerValue) + 9)).toFixed(4)} nm</Text>
+                <Text style={styles.output}>{(parseFloat(value)*Math.pow(10, parseFloat(spinnerValue) + 12)).toFixed(4)} pm</Text>
             </View>
         </SafeAreaView>
     );
@@ -48,6 +57,9 @@ export default Distance;
 const styles = StyleSheet.create({
   main: {
     height: 85,
+    flex: 1,
+    alignItems: 'flex-start',
+    justifyContent: 'flex-start'
   },
   input: {
     height: 40,
@@ -63,10 +75,29 @@ const styles = StyleSheet.create({
       marginTop: 10,
       marginLeft: 10,
       marginRight: 10,
-      flex: 1,
       flexDirection: 'row'
   },
   bottom: {
-      backgroundColor: '#888'
+      marginTop: 20,
+      width: '100%',
+      alignItems: 'center',
+  },
+  output: {
+      width: '90%',
+      marginBottom: 13,
+      padding: 14,
+      backgroundColor: "#ddd",
+      textAlign: 'center',
+      fontSize: 18,
+      alignSelf: 'center',
+      borderRadius: 10,
+      shadowColor: "#000",
+      shadowOffset: {
+          width: 0,
+          height: 3,
+      },
+      shadowOpacity: 0.1,
+      shadowRadius: 4.65,
+      elevation: 6,
   }
 });
