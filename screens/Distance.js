@@ -1,14 +1,10 @@
 import React from 'react';
 import { SafeAreaView, StyleSheet, Text, TextInput, View } from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
-import Icon from 'react-native-vector-icons/Feather';
 
 const Distance = () => {
     const [value, onChangeText] = React.useState('0');
     const [spinnerValue, onChangeSpinnerValue] = React.useState('0');
-    const [data, onChangeData] = React.useState({
-
-    });
 
     return(
         <SafeAreaView style={styles.main}>
@@ -36,7 +32,7 @@ const Distance = () => {
                 itemStyle={{
                     justifyContent: 'flex-start'
                 }}
-                dropDownStyle={{backgroundColor: '#fafafa'}}
+                dropDownStyle={{backgroundColor: '#fafafa', elevation: 6}}
                 onChangeItem={item => onChangeSpinnerValue(item.value)}/>
             </View>
             <View style={styles.bottom}>
@@ -69,7 +65,8 @@ const styles = StyleSheet.create({
   },
   spinner: {
     width: 80,
-    marginLeft: 10
+    marginLeft: 10,
+    elevation: 2,
   },
   top: {
       marginTop: 10,
